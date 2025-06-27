@@ -22,6 +22,7 @@ def main():
                 return
         screen.fill("black")
         igrac.draw(screen)
+        igrac.update(dt)
         pygame.display.flip()
         sat.tick(60)
         dt = sat.tick(60)/1000
