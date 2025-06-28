@@ -15,16 +15,19 @@ def main():
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
     x = SCREEN_WIDTH / 2
     y = SCREEN_HEIGHT / 2
+    updatable = pygame.sprite.Group()
+    drawable = pygame.sprite.Group()
+    Player.containers = (updatable, drawable)
     igrac = Player(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2, 20)
     while True:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 return
         screen.fill("black")
-        igrac.draw(screen)
-        igrac.update(dt)
+        updatable.update(dt)
+        for obj in drawable:
+            obj.draw(screen)
         pygame.display.flip()
-        sat.tick(60)
         dt = sat.tick(60)/1000
 
 
