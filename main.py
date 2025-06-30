@@ -46,6 +46,10 @@ def main():
             if asteroid.collides_with(igrac):
                 print("Game over!")
                 sys.exit()
+            for bullet in shots:
+                if bullet.collides_with(asteroid):
+                    asteroid.split()
+                    bullet.kill()
         updatable.update(dt)
         for obj in drawable:
             obj.draw(screen)
